@@ -15,3 +15,18 @@ let queryDepartments = function() {
 };
 
 //inserts into department table 
+let addDepartment = function(params) {
+    const sql = `INSERT INTO departments (name) VALUES (?)`;
+
+    return new Promise((resolve, reject) =>{
+        db.query(sql, prams, (err,result) =>{
+            if (err){
+                reject({ error: err.message});
+            }
+            resolve({
+                message: '\n Success! you added a department\n',
+                data: result
+            });
+        });
+    });
+};
