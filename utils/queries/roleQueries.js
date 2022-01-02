@@ -23,4 +23,13 @@ let queryBudget = function(departmentId) {
                 LEFT JOIN roles ON employees.role_id = roles.id
                 LEFT JOIN departments ON roles.department_id = departments.id
                 WHERE departments.id = ?`;
-                
+    
+        return new Promise((resolve, reject) => {
+             db.query(sql, departmentId, (err, rows) => {
+                    if (err) {
+                         reject({ message: err.message });
+                     }
+                    resolve(rows);
+                });
+            })
+        };
