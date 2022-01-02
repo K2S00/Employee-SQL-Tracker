@@ -48,3 +48,8 @@ let deleteDepartment = function(id) {
         });
     });
 }
+module.exports = {
+    queryDepartments,
+    addDepartment,
+    deleteDepartment
+}
