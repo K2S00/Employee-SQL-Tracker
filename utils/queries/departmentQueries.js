@@ -30,3 +30,21 @@ let addDepartment = function(params) {
         });
     });
 };
+
+//delete a department from the table 
+let deleteDepartment = function(id) {
+    const sql = `DELETE FROM departments WHERE id = ?`;
+
+    return new Promise((resolve, reject) => {
+        db.query(sql, id, (err, result) => {
+            if (err) {
+                reject({ message: err.message });
+            }
+            resolve({
+                message: '\nSuccessfully deleted department\n',
+                changes: result.affectedRows,
+                id: id
+            });
+        });
+    });
+}
