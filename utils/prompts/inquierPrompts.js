@@ -113,5 +113,29 @@ let mainMenu = async function() {
         });
 };
 
+// Inquirer prompt; add a department
+let addDepartmentPrompt = function() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                name: "departmentName",
+                message: "Please enter new department.",
+                validate: input => {
+                    if (input === '') {
+                        return "Please enter a department."
+                    }
+                    else {
+                        return true;
+                    }
+                }
+            }
+        ])
+        .then(async function(answer) {
+            let data = await addDepartment(answer.departmentName);
+            console.log(data.message);
+            mainMenu();
+        });
+};
 
 
