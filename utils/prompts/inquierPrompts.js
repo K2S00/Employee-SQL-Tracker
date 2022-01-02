@@ -138,4 +138,21 @@ let addDepartmentPrompt = function() {
         });
 };
 
+// Inquirer prompt to add a role
+let addRolePrompt = function() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                name: "roleName",
+                message: "Please enter new role.",
+                validate: input => {
+                    if (input === '') {
+                        return "Please enter a role."
+                    }
+                    else {
+                        return true;
+                    }
+                }
+            },
 
