@@ -6,7 +6,6 @@ let queryRoles = function() {
                  FROM roles
                  INNER JOIN departments ON roles.department_id = departments.id`;
 
-    
     return new Promise((resolve, reject) => {
         db.query(sql, (err, rows) => {
             if (err) {
@@ -16,3 +15,12 @@ let queryRoles = function() {
         });
     })
 };
+
+// Query budget by department
+let queryBudget = function(departmentId) {
+    const sql = `SELECT SUM(roles.salary) AS budget
+                FROM employees
+                LEFT JOIN roles ON employees.role_id = roles.id
+                LEFT JOIN departments ON roles.department_id = departments.id
+                WHERE departments.id = ?`;
+                
