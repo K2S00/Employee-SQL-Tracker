@@ -163,6 +163,7 @@ let deleteEmployee = function(id) {
         });
     });
 }
+
 module.exports = {
     queryEmployees,
     queryEmployeesByManager,
